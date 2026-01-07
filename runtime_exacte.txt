@@ -1,0 +1,577 @@
+----------------DB : BMS----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 33684
+initialization time = 0.872
+initialization candidates generated = 3057
+Execution time = 49.432 s
+Max memory = 206.69051361083984  MB
+Candidates generated = 804414 + 3057 = 807471
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 19740
+initialization time = 0.418
+initialization candidates generated = 6057
+Execution time = 67.924 s
+Max memory = 264.5940933227539  MB
+Candidates generated = 2024518 + 6057 = 2030575
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 19553
+initialization time = 0.405
+initialization candidates generated = 13557
+Execution time = 76.73 s
+Max memory = 287.20777893066406  MB
+Candidates generated = 2667510 + 13557 = 2681067
+==>
+✅ k = 200
+Executing buildInitialTopK...
+initialization minUtility = 6994
+initialization time = 0.347
+initialization candidates generated = 15051
+Execution time = 96.094 s
+Max memory = 312.67903900146484  MB
+Candidates generated = 4075103 + 15051 = 4090154
+==>
+✅ k = 300
+Executing buildInitialTopK...
+initialization minUtility = 6870
+initialization time = 0.405
+initialization candidates generated = 24051
+Execution time = 112.369 s
+Max memory = 339.2787322998047  MB
+Candidates generated = 5177544 + 24051 = 5201595
+==>
+✅ k = 400
+Executing buildInitialTopK...
+initialization minUtility = 6773
+initialization time = 0.487
+initialization candidates generated = 28551
+Execution time = 128.215 s
+Max memory = 351.0112609863281  MB
+Candidates generated = 6233378 + 28551 = 6261929
+==>
+✅ k = 500
+Executing buildInitialTopK...
+initialization minUtility = 6747
+initialization time = 0.477
+initialization candidates generated = 33051
+Execution time = 131.917 s
+Max memory = 341.8330764770508  MB
+Candidates generated = 7063542 + 33051 = 7096593
+==>
+----------------DB : FIFA----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 439896
+initialization time = 42.283
+initialization candidates generated = 4533
+Execution time = 251.826 s
+Max memory = 317.76558685302734  MB
+Candidates generated = 152635 + 4533 = 157168
+==>
+✅ k = 20
+Executing buildInitialTopK...
+initialization minUtility = 428729
+initialization time = 34.527
+initialization candidates generated = 6037
+Execution time = 227.237 s
+Max memory = 366.7096252441406  MB
+Candidates generated = 183068 + 6037 = 189105
+==>
+✅ k = 30
+Executing buildInitialTopK...
+initialization minUtility = 420602
+initialization time = 36.499
+initialization candidates generated = 6037
+Execution time = 248.2 s
+Max memory = 304.1891326904297  MB
+Candidates generated = 195139 + 6037 = 201176
+==>
+✅ k = 40
+Executing buildInitialTopK...
+initialization minUtility = 408856
+initialization time = 37.931
+initialization candidates generated = 6037
+Execution time = 267.722 s
+Max memory = 357.8409881591797  MB
+Candidates generated = 213778 + 6037 = 219815
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 405374
+initialization time = 39.004
+initialization candidates generated = 6037
+Execution time = 273.661 s
+Max memory = 319.9117431640625  MB
+Candidates generated = 220938 + 6037 = 226975
+==>
+✅ k = 70
+Executing buildInitialTopK...
+initialization minUtility = 388594
+initialization time = 41.377
+initialization candidates generated = 7537
+Execution time = 290.048 s
+Max memory = 212.54045867919922  MB
+Candidates generated = 262956 + 7537 = 270493
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 377124
+initialization time = 45.864
+initialization candidates generated = 7537
+Execution time = 348.164 s
+Max memory = 398.23570251464844  MB
+Candidates generated = 290688 + 7537 = 298225
+==>
+----------------DB : Scalability_10K----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 3012
+initialization time = 2.327
+initialization candidates generated = 4306
+Execution time = 6.192 s
+Max memory = 177.62063598632812  MB
+Candidates generated = 9666 + 4306 = 13972
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 1930
+initialization time = 2.155
+initialization candidates generated = 7067
+Execution time = 4.66 s
+Max memory = 197.16847229003906  MB
+Candidates generated = 30853 + 7067 = 37920
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 1802
+initialization time = 1.271
+initialization candidates generated = 8631
+Execution time = 2.99 s
+Max memory = 248.65093994140625  MB
+Candidates generated = 46497 + 8631 = 55128
+==>
+✅ k = 200
+Executing buildInitialTopK...
+initialization minUtility = 2042
+initialization time = 2.477
+initialization candidates generated = 29806
+Execution time = 4.254 s
+Max memory = 307.0692672729492  MB
+Candidates generated = 88868 + 29806 = 118674
+==>
+✅ k = 300
+Executing buildInitialTopK...
+initialization minUtility = 1992
+initialization time = 2.912
+initialization candidates generated = 32986
+Execution time = 4.673 s
+Max memory = 374.8841857910156  MB
+Candidates generated = 110537 + 32986 = 143523
+==>
+✅ k = 400
+Executing buildInitialTopK...
+initialization minUtility = 1959
+initialization time = 3.038
+initialization candidates generated = 34500
+Execution time = 4.78 s
+Max memory = 394.56837463378906  MB
+Candidates generated = 127824 + 34500 = 162324
+==>
+✅ k = 500
+Executing buildInitialTopK...
+initialization minUtility = 1490
+initialization time = 1.149
+initialization candidates generated = 4999
+Execution time = 2.943 s
+Max memory = 404.3607177734375  MB
+Candidates generated = 112744 + 4999 = 117743
+==>
+----------------DB : Scalability_80K----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 26124
+initialization time = 2.465
+initialization candidates generated = 162
+Execution time = 36.244 s
+Max memory = 543.8133544921875  MB
+Candidates generated = 5735 + 162 = 5897
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 14187
+initialization time = 6.086
+initialization candidates generated = 1025
+Execution time = 44.018 s
+Max memory = 1083.7665634155273  MB
+Candidates generated = 16525 + 1025 = 17550
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 11543
+initialization time = 16.897
+initialization candidates generated = 6107
+Execution time = 62.952 s
+Max memory = 1190.0910720825195  MB
+Candidates generated = 37922 + 6107 = 44029
+==>
+✅ k = 200
+Executing buildInitialTopK...
+initialization minUtility = 9108
+initialization time = 15.901
+initialization candidates generated = 7151
+Execution time = 58.386 s
+Max memory = 837.0203247070312  MB
+Candidates generated = 61730 + 7151 = 68881
+==>
+✅ k = 300
+Executing buildInitialTopK...
+initialization minUtility = 8252
+initialization time = 14.903
+initialization candidates generated = 4971
+Execution time = 64.346 s
+Max memory = 563.6613922119141  MB
+Candidates generated = 72865 + 4971 = 77836
+==>
+✅ k = 400
+Executing buildInitialTopK...
+initialization minUtility = 7693
+initialization time = 9.638
+initialization candidates generated = 2275
+Execution time = 63.19 s
+Max memory = 564.1719970703125  MB
+Candidates generated = 76925 + 2275 = 79200
+==>
+✅ k = 500
+Executing buildInitialTopK...
+initialization minUtility = 7278
+initialization time = 11.179
+initialization candidates generated = 1790
+Execution time = 61.378 s
+Max memory = 515.9677124023438  MB
+Candidates generated = 86705 + 1790 = 88495
+==>
+----------------DB : Yoochoose----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 10150654
+initialization time = 0.503
+initialization candidates generated = 45
+Execution time = 2.818 s
+Max memory = 184.858642578125  MB
+Candidates generated = 61 + 45 = 106
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 2018616
+initialization time = 0.506
+initialization candidates generated = 58
+Execution time = 4.125 s
+Max memory = 284.0062942504883  MB
+Candidates generated = 448 + 58 = 506
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 1514084
+initialization time = 0.502
+initialization candidates generated = 101
+Execution time = 3.153 s
+Max memory = 497.0330505371094  MB
+Candidates generated = 925 + 101 = 1026
+==>
+✅ k = 200
+Executing buildInitialTopK...
+initialization minUtility = 631490
+initialization time = 0.504
+initialization candidates generated = 105
+Execution time = 4.327 s
+Max memory = 745.8619079589844  MB
+Candidates generated = 1861 + 105 = 1966
+==>
+✅ k = 300
+Executing buildInitialTopK...
+initialization minUtility = 379365
+initialization time = 0.613
+initialization candidates generated = 124
+Execution time = 5.575 s
+Max memory = 581.6463165283203  MB
+Candidates generated = 2951 + 124 = 3075
+==>
+✅ k = 400
+Executing buildInitialTopK...
+initialization minUtility = 345408
+initialization time = 0.999
+initialization candidates generated = 175
+Execution time = 6.974 s
+Max memory = 654.1431427001953  MB
+Candidates generated = 5051 + 175 = 5226
+==>
+✅ k = 500
+Executing buildInitialTopK...
+initialization minUtility = 322815
+initialization time = 1.015
+initialization candidates generated = 221
+Execution time = 7.565 s
+Max memory = 757.0831680297852  MB
+Candidates generated = 13441 + 221 = 13662
+==>
+----------------DB : Leviathan----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 46676
+initialization time = 2.833
+initialization candidates generated = 5835
+Execution time = 4.187 s
+Max memory = 182.91661071777344  MB
+Candidates generated = 1495 + 5835 = 7330
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 27834
+initialization time = 2.63
+initialization candidates generated = 5722
+Execution time = 4.598 s
+Max memory = 203.7195587158203  MB
+Candidates generated = 4273 + 5722 = 9995
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 21449
+initialization time = 1.793
+initialization candidates generated = 5642
+Execution time = 2.76 s
+Max memory = 217.1868438720703  MB
+Candidates generated = 7153 + 5642 = 12795
+==>
+✅ k = 200
+Executing buildInitialTopK...
+initialization minUtility = 15575
+initialization time = 1.774
+initialization candidates generated = 5535
+Execution time = 3.059 s
+Max memory = 229.8668670654297  MB
+Candidates generated = 12662 + 5535 = 18197
+==>
+✅ k = 300
+Executing buildInitialTopK...
+initialization minUtility = 13150
+initialization time = 2.059
+initialization candidates generated = 5462
+Execution time = 3.59 s
+Max memory = 243.41696166992188  MB
+Candidates generated = 17660 + 5462 = 23122
+==>
+✅ k = 400
+Executing buildInitialTopK...
+initialization minUtility = 11278
+initialization time = 2.509
+initialization candidates generated = 5386
+Execution time = 4.54 s
+Max memory = 257.34716033935547  MB
+Candidates generated = 22885 + 5386 = 28271
+==>
+✅ k = 500
+Executing buildInitialTopK...
+initialization minUtility = 9707
+initialization time = 2.682
+initialization candidates generated = 5285
+Execution time = 4.775 s
+Max memory = 271.9238052368164  MB
+Candidates generated = 28295 + 5285 = 33580
+==>
+----------------DB : SIGN----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 31474
+initialization time = 0.604
+initialization candidates generated = 3186
+Execution time = 1.347 s
+Max memory = 788.3750991821289  MB
+Candidates generated = 17214 + 3186 = 20400
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 24150
+initialization time = 0.511
+initialization candidates generated = 3037
+Execution time = 1.756 s
+Max memory = 789.3069000244141  MB
+Candidates generated = 27597 + 3037 = 30634
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 21556
+initialization time = 0.667
+initialization candidates generated = 4763
+Execution time = 2.067 s
+Max memory = 789.2066497802734  MB
+Candidates generated = 38149 + 4763 = 42912
+==>
+✅ k = 200
+Executing buildInitialTopK...
+initialization minUtility = 19323
+initialization time = 0.646
+initialization candidates generated = 5268
+Execution time = 2.381 s
+Max memory = 789.2658081054688  MB
+Candidates generated = 48799 + 5268 = 54067
+==>
+✅ k = 300
+Executing buildInitialTopK...
+initialization minUtility = 17917
+initialization time = 0.731
+initialization candidates generated = 5618
+Execution time = 2.721 s
+Max memory = 789.1268157958984  MB
+Candidates generated = 57579 + 5618 = 63197
+==>
+✅ k = 400
+Executing buildInitialTopK...
+initialization minUtility = 17000
+initialization time = 0.767
+initialization candidates generated = 5884
+Execution time = 2.97 s
+Max memory = 789.3103485107422  MB
+Candidates generated = 65281 + 5884 = 71165
+==>
+✅ k = 500
+Executing buildInitialTopK...
+initialization minUtility = 16310
+initialization time = 0.79
+initialization candidates generated = 6138
+Execution time = 3.195 s
+Max memory = 789.2684936523438  MB
+Candidates generated = 72294 + 6138 = 78432
+==>
+----------------DB : BIBLE----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 374200
+initialization time = 4.754
+initialization candidates generated = 5954
+Execution time = 6.699 s
+Max memory = 727.2411346435547  MB
+Candidates generated = 832 + 5954 = 6786
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 213884
+initialization time = 5.753
+initialization candidates generated = 5910
+Execution time = 9.147 s
+Max memory = 866.8347778320312  MB
+Candidates generated = 2625 + 5910 = 8535
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 136474
+initialization time = 7.008
+initialization candidates generated = 5857
+Execution time = 11.389 s
+Max memory = 931.2802124023438  MB
+Candidates generated = 5025 + 5857 = 10882
+==>
+✅ k = 200
+Executing buildInitialTopK...
+initialization minUtility = 88156
+initialization time = 8.339
+initialization candidates generated = 5773
+Execution time = 14.108 s
+Max memory = 939.1312408447266  MB
+Candidates generated = 9281 + 5773 = 15054
+==>
+✅ k = 300
+Executing buildInitialTopK...
+initialization minUtility = 69828
+initialization time = 8.621
+initialization candidates generated = 5714
+Execution time = 15.623 s
+Max memory = 945.6829833984375  MB
+Candidates generated = 13339 + 5714 = 19053
+==>
+✅ k = 400
+Executing buildInitialTopK...
+initialization minUtility = 58508
+initialization time = 10.165
+initialization candidates generated = 5664
+Execution time = 18.413 s
+Max memory = 661.2545623779297  MB
+Candidates generated = 17297 + 5664 = 22961
+==>
+✅ k = 500
+Executing buildInitialTopK...
+initialization minUtility = 50788
+initialization time = 10.593
+initialization candidates generated = 5620
+Execution time = 20.332 s
+Max memory = 334.66241455078125  MB
+Candidates generated = 21168 + 5620 = 26788
+==>
+----------------DB : Kosarak10k----------------
+✅ k = 10
+Executing buildInitialTopK...
+initialization minUtility = 32135
+initialization time = 0.925
+initialization candidates generated = 5318
+Execution time = 1.045 s
+Max memory = 315.4694595336914  MB
+Candidates generated = 2446 + 5318 = 7764
+==>
+✅ k = 20
+Executing buildInitialTopK...
+initialization minUtility = 21795
+initialization time = 0.697
+initialization candidates generated = 3160
+Execution time = 0.895 s
+Max memory = 72.95806884765625  MB
+Candidates generated = 9880 + 3160 = 13040
+==>
+✅ k = 30
+Executing buildInitialTopK...
+initialization minUtility = 16879
+initialization time = 0.821
+initialization candidates generated = 3160
+Execution time = 1.137 s
+Max memory = 152.17056274414062  MB
+Candidates generated = 15610 + 3160 = 18770
+==>
+✅ k = 40
+Executing buildInitialTopK...
+initialization minUtility = 14107
+initialization time = 0.892
+initialization candidates generated = 3160
+Execution time = 1.322 s
+Max memory = 161.10455322265625  MB
+Candidates generated = 14443 + 3160 = 17603
+==>
+✅ k = 50
+Executing buildInitialTopK...
+initialization minUtility = 12635
+initialization time = 1.006
+initialization candidates generated = 3144
+Execution time = 1.552 s
+Max memory = 188.0084228515625  MB
+Candidates generated = 18075 + 3144 = 21219
+==>
+✅ k = 70
+Executing buildInitialTopK...
+initialization minUtility = 9357
+initialization time = 1.092
+initialization candidates generated = 3144
+Execution time = 855.575 s
+Max memory = 823.9000701904297  MB
+Candidates generated = 84931540 + 3144 = 84934684
+==>
+✅ k = 100
+Executing buildInitialTopK...
+initialization minUtility = 7578
+initialization time = 1.248
+initialization candidates generated = 3144
+Run for dataset Kosarak10k with topK=100 timed out after 1000 seconds.
+==>
+Execution time = 2340.416 s
+Max memory = 955.042839050293  MB
+Candidates generated = 266414608 + 3144 = 266417752
