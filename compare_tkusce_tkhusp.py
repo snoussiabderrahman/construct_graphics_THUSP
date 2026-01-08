@@ -35,8 +35,11 @@ class DataParser:
             'TKHUSP-Miner': '--'
         }
 
-    def parse_runtime_exact(self) -> Dict[str, Dict[int, float]]:
-        """Parses runtime_exacte.txt to get TKHUSP-Miner runtimes."""
+    def parse_runtime_exact(self) -> Dict[str, Dict[int, Dict[str, float]]]:
+        """
+        Parses runtime_exacte.txt to get TKHUSP-Miner runtimes and memory usage.
+        Returns: {dataset: {k: {'runtime': float, 'memory': float}}}
+        """
         result = {}
         if not self.runtime_exact_file.exists():
             print(f"⚠️  File {self.runtime_exact_file} not found")
@@ -56,16 +59,28 @@ class DataParser:
             block_content = blocks[i + 1]
             result[dataset] = {}
             
-            # Find all k and their runtimes
-            # Pattern: ✅ k = 10 ... Execution time = 2.818 s
+            # Find all k and their runtimes/memory
             parts = re.split(r'✅\s*k\s*=\s*(\d+)', block_content)
             for j in range(1, len(parts), 2):
                 try:
                     k = int(parts[j])
                     k_block = parts[j + 1]
-                    match = re.search(r'Execution time\s*=\s*([\d\.]+)\s*s', k_block)
-                    if match:
-                        result[dataset][k] = float(match.group(1))
+                    
+                    metrics = {}
+                    
+                    # Runtime
+                    match_time = re.search(r'Execution time\s*=\s*([\d\.]+)\s*s', k_block)
+                    if match_time:
+                        metrics['runtime'] = float(match_time.group(1))
+                        
+                    # Memory
+                    match_mem = re.search(r'Max memory\s*=\s*([\d\.]+)\s*MB', k_block)
+                    if match_mem:
+                        metrics['memory'] = float(match_mem.group(1))
+                        
+                    if metrics:
+                        result[dataset][k] = metrics
+                        
                 except Exception:
                     continue
         return result
@@ -111,8 +126,8 @@ class DataParser:
 
     def load_tkusce_data(self, dataset: str) -> Dict[int, Dict[str, float]]:
         """
-        Loads acc.json, runtime.json, avgUtil.json for TKUS-CE.
-        Returns: {k: {'accuracy': val, 'runtime': val, 'avgUtil': val}}
+        Loads acc.json, runtime.json, avgUtil.json, memory.json for TKUS-CE.
+        Returns: {k: {'accuracy': val, 'runtime': val, 'avgUtil': val, 'memory': val}}
         """
         data = {}
         dataset_dir = self.tkusce_dir / dataset
@@ -141,6 +156,8 @@ class DataParser:
                                     val = item.get('time') or item.get('runtime')
                                 elif key_map == 'avgUtil':
                                     val = item.get('avgUtility') or item.get('avgUtil')
+                                elif key_map == 'memory':
+                                    val = item.get('memory')
                                     
                                 if val is not None:
                                     data[k][key_map] = float(val)
@@ -150,17 +167,18 @@ class DataParser:
         load_file('acc.json', 'accuracy')
         load_file('runtime.json', 'runtime')
         load_file('avgUtil.json', 'avgUtil')
+        load_file('memory.json', 'memory')
         
         return data
 
 def generate_plots():
     parser = DataParser()
     
-    # 1. Load Exact Runtimes
-    exact_runtimes = parser.parse_runtime_exact()
+    # 1. Load Exact Runtimes and Memory
+    exact_metrics_map = parser.parse_runtime_exact() # {dataset: {k: {runtime, memory}}}
     
     # 2. Identify all datasets
-    datasets = set(exact_runtimes.keys())
+    datasets = set(exact_metrics_map.keys())
     if parser.tkusce_dir.exists():
         for d in parser.tkusce_dir.iterdir():
             if d.is_dir():
@@ -175,14 +193,14 @@ def generate_plots():
         
         # Load Exact Data (TKHUSP-Miner)
         exact_results = parser.get_exact_results(dataset)  # {k: {avgUtil, count}}
-        exact_runtime_map = exact_runtimes.get(dataset, {})  # {k: runtime}
+        exact_runtime_mem = exact_metrics_map.get(dataset, {})  # {k: {runtime, memory}}
         
         # Load TKUS-CE Data
-        tkusce_data = parser.load_tkusce_data(dataset)  # {k: {accuracy, runtime, avgUtil}}
+        tkusce_data = parser.load_tkusce_data(dataset)  # {k: {accuracy, runtime, avgUtil, memory}}
         
         # Collect all K values
         all_ks = set(exact_results.keys())
-        all_ks.update(exact_runtime_map.keys())
+        all_ks.update(exact_runtime_mem.keys())
         all_ks.update(tkusce_data.keys())
         
         if not all_ks:
@@ -191,21 +209,19 @@ def generate_plots():
             
         sorted_ks = sorted(list(all_ks))
         
-        # Setup Plot
-        fig, (ax_acc, ax_rt, ax_avg) = plt.subplots(1, 3, figsize=(24, 6))
-        
         # --- 1. Accuracy Plot ---
-        # TKHUSP-Miner is always 100% (exact algorithm)
+        fig_acc, ax_acc = plt.subplots(figsize=(8, 6))
+        
+        # TKHUSP-Miner is always 100%
         ax_acc.axhline(y=100, color=parser.colors['TKHUSP-Miner'], 
                        linestyle=parser.linestyles['TKHUSP-Miner'], 
                        label='TKHUSP-Miner', linewidth=2)
         
-        # TKUS-CE accuracy
+        # TKUS-CE
         xs = []
         ys = []
         for k in sorted_ks:
             if k in tkusce_data and 'accuracy' in tkusce_data[k]:
-                # Calculate percentage
                 exact_count = exact_results.get(k, {}).get('count', 0)
                 if exact_count > 0:
                     acc_pct = (tkusce_data[k]['accuracy'] / exact_count) * 100
@@ -225,14 +241,22 @@ def generate_plots():
         ax_acc.grid(True, linestyle='--', alpha=0.5)
         ax_acc.legend(fontsize=11)
         
+        plt.tight_layout()
+        outfile_acc = output_dir / f"{dataset}_Accuracy.svg"
+        plt.savefig(outfile_acc, format='svg')
+        plt.close(fig_acc)
+        print(f"  ✅ Saved {outfile_acc}")
+
         # --- 2. Runtime Plot ---
+        fig_rt, ax_rt = plt.subplots(figsize=(8, 6))
+        
         # TKHUSP-Miner
         ex_xs = []
         ex_ys = []
         for k in sorted_ks:
-            if k in exact_runtime_map:
+            if k in exact_runtime_mem and 'runtime' in exact_runtime_mem[k]:
                 ex_xs.append(k)
-                ex_ys.append(exact_runtime_map[k])
+                ex_ys.append(exact_runtime_mem[k]['runtime'])
         if ex_xs:
             ax_rt.plot(ex_xs, ex_ys, marker=parser.markers['TKHUSP-Miner'], 
                       color=parser.colors['TKHUSP-Miner'], 
@@ -257,8 +281,16 @@ def generate_plots():
         ax_rt.set_ylabel("Time (s)", fontsize=12)
         ax_rt.grid(True, linestyle='--', alpha=0.5)
         ax_rt.legend(fontsize=11)
+        
+        plt.tight_layout()
+        outfile_rt = output_dir / f"{dataset}_Runtime.svg"
+        plt.savefig(outfile_rt, format='svg')
+        plt.close(fig_rt)
+        print(f"  ✅ Saved {outfile_rt}")
 
         # --- 3. Average Utility Plot ---
+        fig_avg, ax_avg = plt.subplots(figsize=(8, 6))
+        
         # TKHUSP-Miner
         ex_xs = []
         ex_ys = []
@@ -291,12 +323,60 @@ def generate_plots():
         ax_avg.grid(True, linestyle='--', alpha=0.5)
         ax_avg.legend(fontsize=11)
         
-        # Save
         plt.tight_layout()
-        outfile = output_dir / f"{dataset}_comparison.svg"
-        plt.savefig(outfile, format='svg')
-        plt.close(fig)
-        print(f"  ✅ Saved {outfile}")
+        outfile_avg = output_dir / f"{dataset}_AvgUtility.svg"
+        plt.savefig(outfile_avg, format='svg')
+        plt.close(fig_avg)
+        print(f"  ✅ Saved {outfile_avg}")
+
+        # --- 4. Memory Plot (Histogram) ---
+        fig_mem, ax_mem = plt.subplots(figsize=(10, 6))
+        
+        # Prepare data for histogram
+        ks_for_mem = sorted_ks
+        x = np.arange(len(ks_for_mem))
+        width = 0.35
+        
+        exact_mem_vals = []
+        tkusce_mem_vals = []
+        
+        for k in ks_for_mem:
+            # Exact Memory
+            val_ex = 0
+            if k in exact_runtime_mem and 'memory' in exact_runtime_mem[k]:
+                val_ex = exact_runtime_mem[k]['memory']
+            exact_mem_vals.append(val_ex)
+            
+            # TKUS-CE Memory
+            val_ce = 0
+            if k in tkusce_data and 'memory' in tkusce_data[k]:
+                val_ce = tkusce_data[k]['memory']
+            tkusce_mem_vals.append(val_ce)
+            
+        # Draw bars
+        # Only draw if there is data
+        has_data = any(v > 0 for v in exact_mem_vals) or any(v > 0 for v in tkusce_mem_vals)
+        
+        if has_data:
+            rects1 = ax_mem.bar(x - width/2, exact_mem_vals, width, label='TKHUSP-Miner', color=parser.colors['TKHUSP-Miner'])
+            rects2 = ax_mem.bar(x + width/2, tkusce_mem_vals, width, label='TKUS-CE', color=parser.colors['TKUS-CE'])
+            
+            ax_mem.set_title(f"{dataset} - Memory Consumption", fontsize=14, fontweight='bold')
+            ax_mem.set_xlabel("k", fontsize=12)
+            ax_mem.set_ylabel("Memory (MB)", fontsize=12)
+            ax_mem.set_xticks(x)
+            ax_mem.set_xticklabels(ks_for_mem)
+            ax_mem.legend(fontsize=11)
+            ax_mem.grid(True, linestyle='--', alpha=0.5, axis='y')
+            
+            plt.tight_layout()
+            outfile_mem = output_dir / f"{dataset}_Memory.svg"
+            plt.savefig(outfile_mem, format='svg')
+            print(f"  ✅ Saved {outfile_mem}")
+        else:
+             print(f"  ⚠️ No memory data for {dataset}, skipping memory plot.")
+        
+        plt.close(fig_mem)
 
 if __name__ == "__main__":
     print("=" * 60)

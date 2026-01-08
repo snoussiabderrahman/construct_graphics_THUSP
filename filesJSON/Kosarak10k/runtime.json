@@ -1,9 +1,9 @@
 [
-  {"k": 10, "runtime": 2.24},
-  {"k": 20, "runtime": 2.75},
-  {"k": 30, "runtime": 3.16},
-  {"k": 40, "runtime": 3.32},
-  {"k": 50, "runtime": 3.73},
-  {"k": 70, "runtime": 3.88},
-  {"k": 100, "runtime": 4.00}
+  {"k": 10, "runtime": 2.00},
+  {"k": 20, "runtime": 2.49},
+  {"k": 30, "runtime": 2.76},
+  {"k": 40, "runtime": 3.08},
+  {"k": 50, "runtime": 3.21},
+  {"k": 70, "runtime": 3.35},
+  {"k": 100, "runtime": 3.49}
 ]
