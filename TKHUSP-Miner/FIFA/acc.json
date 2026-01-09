@@ -1,0 +1,30 @@
+[
+  {
+    "k": 10,
+    "accuracy": 10
+  },
+  {
+    "k": 20,
+    "accuracy": 20
+  },
+  {
+    "k": 30,
+    "accuracy": 30
+  },
+  {
+    "k": 40,
+    "accuracy": 40
+  },
+  {
+    "k": 50,
+    "accuracy": 50
+  },
+  {
+    "k": 70,
+    "accuracy": 70
+  },
+  {
+    "k": 100,
+    "accuracy": 100
+  }
+]
