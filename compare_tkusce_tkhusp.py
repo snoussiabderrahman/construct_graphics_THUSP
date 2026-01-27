@@ -13,7 +13,7 @@ class DataParser:
         self.base_dir = Path(base_dir)
         
         # TKUS-CE data directory
-        self.tkusce_dir = self.base_dir / "filesJSON"
+        self.tkusce_dir = self.base_dir / "TKUS-CE"
         
         # TKHUSP-Miner exact algorithm data
         self.output_exact_dir = self.base_dir / "output_exacts"
@@ -234,9 +234,9 @@ def generate_plots():
                        linestyle=parser.linestyles['TKUS-CE'], 
                        label='TKUS-CE', linewidth=2)
         
-        ax_acc.set_title(f"{dataset} - Accuracy", fontsize=14, fontweight='bold')
-        ax_acc.set_xlabel("k", fontsize=12)
-        ax_acc.set_ylabel("Accuracy (%)", fontsize=12)
+        ax_acc.set_title(f"{dataset}", fontsize=25)
+        ax_acc.set_xlabel("k", fontsize=20)
+        ax_acc.set_ylabel("Accuracy (%)", fontsize=20)
         ax_acc.set_ylim(0, 105)
         ax_acc.grid(True, linestyle='--', alpha=0.5)
         ax_acc.legend(fontsize=11)
@@ -276,9 +276,9 @@ def generate_plots():
                       linestyle=parser.linestyles['TKUS-CE'], 
                       label='TKUS-CE', linewidth=2)
 
-        ax_rt.set_title(f"{dataset} - Runtime", fontsize=14, fontweight='bold')
-        ax_rt.set_xlabel("k", fontsize=12)
-        ax_rt.set_ylabel("Time (s)", fontsize=12)
+        ax_rt.set_title(f"{dataset}", fontsize=25)
+        ax_rt.set_xlabel("k", fontsize=20)
+        ax_rt.set_ylabel("Time (s)", fontsize=20)
         ax_rt.grid(True, linestyle='--', alpha=0.5)
         ax_rt.legend(fontsize=11)
         
@@ -317,9 +317,9 @@ def generate_plots():
                        linestyle=parser.linestyles['TKUS-CE'], 
                        label='TKUS-CE', linewidth=2)
 
-        ax_avg.set_title(f"{dataset} - Average Utility", fontsize=14, fontweight='bold')
-        ax_avg.set_xlabel("k", fontsize=12)
-        ax_avg.set_ylabel("Utility", fontsize=12)
+        ax_avg.set_title(f"{dataset}", fontsize=25)
+        ax_avg.set_xlabel("k", fontsize=20)
+        ax_avg.set_ylabel("Utility", fontsize=20)
         ax_avg.grid(True, linestyle='--', alpha=0.5)
         ax_avg.legend(fontsize=11)
         
@@ -361,9 +361,9 @@ def generate_plots():
             rects1 = ax_mem.bar(x - width/2, exact_mem_vals, width, label='TKHUSP-Miner', color=parser.colors['TKHUSP-Miner'])
             rects2 = ax_mem.bar(x + width/2, tkusce_mem_vals, width, label='TKUS-CE', color=parser.colors['TKUS-CE'])
             
-            ax_mem.set_title(f"{dataset} - Memory Consumption", fontsize=14, fontweight='bold')
-            ax_mem.set_xlabel("k", fontsize=12)
-            ax_mem.set_ylabel("Memory (MB)", fontsize=12)
+            ax_mem.set_title(f"{dataset}", fontsize=25)
+            ax_mem.set_xlabel("k", fontsize=20)
+            ax_mem.set_ylabel("Memory (MB)", fontsize=20)
             ax_mem.set_xticks(x)
             ax_mem.set_xticklabels(ks_for_mem)
             ax_mem.legend(fontsize=11)
