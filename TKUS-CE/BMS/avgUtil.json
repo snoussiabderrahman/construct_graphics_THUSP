@@ -1,0 +1,9 @@
+[
+  {"k": 10, "avgUtility": 48699.8},
+  {"k": 50, "avgUtility": 27456.94},
+  {"k": 100, "avgUtility": 20246.86},
+  {"k": 200, "avgUtility": 14072.34},
+  {"k": 300, "avgUtility": 11604.15},
+  {"k": 400, "avgUtility": 10001.92},
+  {"k": 500, "avgUtility": 8705.998}
+]
